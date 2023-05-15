@@ -86,7 +86,7 @@
         src: docker-compose.yaml
         dest: /home/docker-compose.yaml
 - name: start the container in the server
-  host: server_prod
+  hosts: server_prod
   tasks:
     - name: start container defined in the docker-compose file
       community.docker.docker_compose:

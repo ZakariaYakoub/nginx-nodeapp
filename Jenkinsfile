@@ -29,12 +29,12 @@ pipeline {
                     echo "copying the files to ansible server"
                     sh "envsubst < conf-nginx > nginx-config"
                     sshagent(['server-ssh-key']) {
-                       sh "scp -o StrictHostKeyChecking=no nginx-config ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
-                       sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
-                       sh "scp -o StrictHostKeyChecking=no deploy-nginx.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
-                       sh "scp -o StrictHostKeyChecking=no deploy-nodeapp.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
-                       sh "scp -o StrictHostKeyChecking=no inventory-aws_ec2.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
-                       sh "scp -o StrictHostKeyChecking=no ansible.cfg ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
+                       sh "scp  -o StrictHostKeyChecking=no nginx-config zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
+                       sh "scp -o StrictHostKeyChecking=no docker-compose.yaml zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
+                       sh "scp -o StrictHostKeyChecking=no deploy-nginx.yaml zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
+                       sh "scp -o StrictHostKeyChecking=no deploy-nodeapp.yaml zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
+                       sh "scp -o StrictHostKeyChecking=no inventory-aws_ec2.yaml zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
+                       sh "scp -o StrictHostKeyChecking=no ansible.cfg zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
                     }
 
                     echo "calling ansible playbook to configure nginx server"
