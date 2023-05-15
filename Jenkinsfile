@@ -23,7 +23,7 @@ pipeline {
             }
         }
 
-        stage('manage nginx server') {
+        stage('manage the servers') {
             steps {
                 script {
                     echo "copying the files to ansible server"
@@ -49,24 +49,5 @@ pipeline {
             }
         }
 
-
-
-
-        stage('deploy app to ec2') {
-            steps {
-                script {
-                    echo "calling ansible playbook to configure ec2-instance"
-                    def remote= [:]
-                    remote.name = "ansible-server"
-                    remote.host = "20.111.8.195"
-                    remote.allowAnyHosts = true
-                    withCredentials([sshUserPrivateKey(credentialsId:'ansible-server-key',keyFileVariable: 'keyfile',usernameVariable:'user')]){
-                        remote.user = user
-                        remote.identityFile = keyfile
-                        sshCommand remote: remote, command: "cd ansible-project && sudo ansible-playbook deploy-docker.yaml"
-                   }
-                }
-            }
-        }
     }
 }
