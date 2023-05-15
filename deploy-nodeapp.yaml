@@ -90,5 +90,5 @@
   tasks:
     - name: start container defined in the docker-compose file
       community.docker.docker_compose:
-        project_src: /home/docker-compose.yaml
+        project_src: /home/
         state: present
