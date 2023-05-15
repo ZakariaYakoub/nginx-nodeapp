@@ -1,0 +1,27 @@
+---
+
+- name: install nginx
+  hosts: server_nginx
+  become: true
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        update_cache: true
+        state: present
+- name: copy nginx configuration
+  hosts: server_nginx
+  become: true
+  tasks:
+    - name: Copy nginx configuration to site-enabled
+      copy: 
+        src: nginx-config
+        dest: /etc/nginx/sites-enabled/nginx-config
+- name: restart nginx service
+  hosts: server_nginx
+  become: true
+  tasks:
+    - name: Reload nginx service
+      service:
+        name: nginx
+        state: reloaded
