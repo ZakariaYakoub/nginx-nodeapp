@@ -33,6 +33,7 @@ pipeline {
                        sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
                        sh "scp -o StrictHostKeyChecking=no deploy-nginx.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
                        sh "scp -o StrictHostKeyChecking=no deploy-nodeapp.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
+                       sh "scp -o StrictHostKeyChecking=no inventory-aws_ec2.yaml ${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
                     }
 
                     echo "calling ansible playbook to configure nginx server"
