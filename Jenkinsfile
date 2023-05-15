@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     echo "copying the files to ansible server"
-                    sh "envsubst < conf-nginx > nginx-config"
+                    sh "NODE1_PUBLIC_IP=${NODE1_PUBLIC_IP} NODE2_PUBLIC_IP=${NODE2_PUBLIC_IP} NGINX_PUBLIC_IP=${NGINX_PUBLIC_IP} envsubst < conf-nginx > nginx-config"
                     sshagent(['server-ssh-key']) {
                        sh "scp  -o StrictHostKeyChecking=no nginx-config zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
                        sh "scp -o StrictHostKeyChecking=no docker-compose.yaml zikou@${ANSIBLE_SERVER}:/home/zikou/ansible-nginx"
