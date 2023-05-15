@@ -18,10 +18,10 @@ variable "myip" {
     default = "41.249.88.239/32"
 }
 variable "pub_key_location" {
-    default = "C:/Users/Zikou/.ssh/id_rsa.pub"
+    default = "/var/jenkins_home/.ssh/id_rsa.pub"
 }
 variable "private_key_location" {
-    default = "C:/Users/Zikou/.ssh/id_rsa"
+    default = "/var/jenkins_home/.ssh/id_rsa"
 }
 
 
