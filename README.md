@@ -8,5 +8,5 @@ Provision EC2 Instances: This stage provisions EC2 instances on AWS using Terraf
 
 Manage the Servers: In this stage, the pipeline performs the following actions:
 
-1- Copies necessary configuration files to the Ansible server.
+1- Copies necessary configuration files to the Ansible server. <br>
 2- Configures Nginx and the Node.js application by running Ansible playbooks on the Ansible server.
